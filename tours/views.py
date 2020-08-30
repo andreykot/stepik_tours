@@ -1,9 +1,17 @@
-from django.http import Http404
+from django.http import Http404, HttpResponseServerError, HttpResponseNotFound
 from django.shortcuts import render
 
 # Create your views here.
 from django.views import View
 from .data import departures, tours
+
+
+def custom_handler404(request, exception):
+    return HttpResponseNotFound('Упс, не могу найти такую страницу...')
+
+
+def custom_handler500(request, *args, **kwargs):
+    return HttpResponseServerError('Упс, что то сломалось...')
 
 
 class MainView(View):
