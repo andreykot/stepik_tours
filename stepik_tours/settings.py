@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'l-%^7x20(25+4e9jp50=p#(lcufcxf0%fk)6f63_#*ngaa9kwb'
+SECRET_KEY = os.environ['DJANGO_STEPIK']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'stepik_tours.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['tours/templates/tours'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
